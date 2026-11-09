@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#071322" />
+  <title>Turbo Circuit — 60 Second Time Trial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game-canvas" aria-label="3D kart racing game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Turbo Circuit home"><span class="brand-mark">T</span><span>TURBO<span class="brand-light"> CIRCUIT</span></span></a>
+      <div class="event-label"><i></i> TIME TRIAL <span>·</span> CIRCUIT 01</div>
+      <button id="sound-toggle" class="sound-button" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+    <section class="race-hud" id="race-hud" aria-live="polite">
+      <div class="hud-left">
+        <div class="timer-card"><span class="hud-kicker">TIME REMAINING</span><strong id="timer">60<span>.00</span></strong><div class="timer-track"><i id="timer-fill"></i></div></div>
+        <div class="lap-card"><span class="hud-kicker">LAP</span><strong><span id="lap-number">1</span><small> / 3</small></strong></div>
+      </div>
+      <div class="hud-center"><div id="speed-value">000</div><span>KM/H</span><div class="speed-tick"></div></div>
+      <div class="hud-right"><div class="position"><span class="hud-kicker">BEST LAP</span><strong id="best-lap">--:--.--</strong></div><div class="mini-map"><canvas id="map-canvas" width="156" height="104"></canvas><span class="map-label">PINE RIDGE</span></div></div>
+      <div id="boost-meter" class="boost-meter"><span>DRIFT BOOST</span><div><i></i></div></div>
+    </section>
+    <div class="track-toast" id="track-toast"></div>
+    <div id="countdown" class="countdown" aria-hidden="true"></div>
+    <div class="controls-hint" id="controls-hint"><span>W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span><em>DRIVE</em><b>SPACE</b><em>DRIFT</em></div>
+    <section id="start-screen" class="screen visible">
+      <div class="start-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE CLOCK IS TICKING</div>
+        <h1>ONE TRACK.<br><span>60 SECONDS.</span></h1>
+        <p>Three laps around Pine Ridge. Find your line, hold the drift, and beat the clock.</p>
+        <div class="start-meta"><div><span>TRACK</span><b>PINE RIDGE</b></div><div><span>FORMAT</span><b>3 LAPS · SOLO</b></div><div><span>BEST</span><b id="menu-best">--:--.--</b></div></div>
+        <button id="start-button" class="primary-button"><span>START YOUR ENGINE</span><i>↗</i></button>
+        <div class="start-footnote">WASD / ARROWS TO DRIVE <span>·</span> SPACE TO DRIFT <span>·</span> R TO RESTART</div>
+      </div>
+      <div class="track-stamp"><span>01</span><i></i><b>PINE RIDGE<br>GRAND CIRCUIT</b></div>
+    </section>
+    <section id="finish-screen" class="screen finish-screen">
+      <div class="finish-content"><div class="eyebrow"><span class="eyebrow-line"></span> CHECKERED FLAG</div><h2 id="finish-title">TIME'S UP</h2><p id="finish-copy">The circuit is yours. Take another run.</p><div class="result-grid"><div><span>LAPS</span><b id="result-laps">0 / 3</b></div><div><span>BEST LAP</span><b id="result-best">--:--.--</b></div><div><span>TOP SPEED</span><b id="result-speed">000 KM/H</b></div></div><button id="retry-button" class="primary-button"><span>RACE AGAIN</span><i>↻</i></button></div>
+    </section>
+    <div class="mobile-controls" id="mobile-controls"><button data-control="left" aria-label="Steer left">‹</button><button data-control="right" aria-label="Steer right">›</button><button data-control="drift" aria-label="Drift">DRIFT</button><button data-control="accelerate" aria-label="Accelerate">▲</button><button data-control="brake" aria-label="Brake">▼</button></div>
+    <div class="pause-badge" id="pause-badge">PAUSED <span>· PRESS P TO RESUME</span></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
